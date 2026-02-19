@@ -1,2 +1,3 @@
-# ajay-labour-service
-Exported from Caffeine project: Ajay Labour Service
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

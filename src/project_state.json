@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Professional website for Ajay Labour Service - a local labour service business in Tinsukia and Doomdooma, Assam. Multi-page website with booking system and ₹300 advance payment via UPI/online payment. Services include mason, electrician, plumber, painter, construction helper, and daily wage labour.",
+  "architectural_notes": [
+    "Multi-page website architecture (Home, Services, Booking, About, Contact)",
+    "Payment gateway integration required for UPI and online payments",
+    "Mobile-first responsive design approach",
+    "Trust-building elements: verified workers badge, quick response indicators, transparent pricing display"
+  ],
+  "known_issues": [],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-home-page-with-headline-verified-labour-service-in-tinsukia-doomdooma-fast-reliable-affordable-subheading-explaining-trusted-local-workers-and-three-prominent-cta-buttons-call-now-whatsapp-and-book-now",
+      "title": "Create a Home page with headline 'Verified Labour Service in Tinsukia & Doomdooma – Fast, Reliable & Affordable', subheading explaining trusted local workers, and three prominent CTA buttons: Call Now, WhatsApp, and Book Now",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-booking-page-with-a-customer-form-collecting-name-phone-number-location-type-of-work-date-required-and-description",
+      "title": "Create a Booking page with a customer form collecting: Name, Phone Number, Location, Type of Work, Date Required, and Description",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-300-advance-booking-payment-functionality-with-upi-online-payment-integration-displaying-the-message-booking-confirmed-only-after-advance-payment",
+      "title": "Implement ₹300 advance booking payment functionality with UPI/online payment integration, displaying the message 'Booking confirmed only after advance payment'",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-trust-building-elements-throughout-the-site-verified-workers-badge-quick-response-indicator-transparent-pricing-message-and-customer-support-availability",
+      "title": "Implement trust-building elements throughout the site: Verified workers badge, Quick response indicator, Transparent pricing message, and Customer support availability",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-optimize-pages-for-seo-with-keywords-labour-service-in-tinsukia-labour-service-in-doomdooma-construction-workers-in-assam-verified-local-labour",
+      "title": "Optimize pages for SEO with keywords: 'Labour service in Tinsukia', 'Labour service in Doomdooma', 'Construction workers in Assam', 'Verified local labour'",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-mobile-friendly-responsive-design-with-blue-and-orange-color-theme-ensuring-fast-loading-and-professional-appearance-across-all-devices",
+      "title": "Implement mobile-friendly responsive design with blue and orange color theme, ensuring fast loading and professional appearance across all devices",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-customer-testimonials-section-on-the-home-page-displaying-3-4-reviews-from-satisfied-customers-with-names-ratings-and-brief-comments-about-service-quality",
+      "title": "Add a customer testimonials section on the Home page displaying 3-4 reviews from satisfied customers with names, ratings, and brief comments about service quality",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-photo-gallery-section-showcasing-completed-work-projects-with-before-after-images-or-work-in-progress-photos-for-different-service-categories",
+      "title": "Create a photo gallery section showcasing completed work projects with before/after images or work-in-progress photos for different service categories",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-faq-frequently-asked-questions-section-addressing-common-customer-queries-about-booking-process-payment-service-areas-worker-verification-and-pricing",
+      "title": "Add an FAQ (Frequently Asked Questions) section addressing common customer queries about booking process, payment, service areas, worker verification, and pricing",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-whatsapp-direct-booking-integration-by-adding-a-whatsapp-button-that-opens-a-pre-filled-message-with-booking-template-including-service-type-location-and-contact-request",
+      "title": "Implement WhatsApp direct booking integration by adding a WhatsApp button that opens a pre-filled message with booking template including service type, location, and contact request",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-services-page-with-detailed-descriptions-for-each-of-the-six-labour-categories-including-typical-tasks-experience-level-of-workers-and-estimated-project-timelines",
+      "title": "Enhance the Services page with detailed descriptions for each of the six labour categories, including typical tasks, experience level of workers, and estimated project timelines",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-about-page-with-additional-sections-including-business-history-timeline-team-size-information-service-commitment-promises-and-community-impact-in-tinsukia-and-doomdooma-region",
+      "title": "Enhance the About page with additional sections including business history timeline, team size information, service commitment promises, and community impact in Tinsukia and Doomdooma region",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-contact-page-by-adding-a-contact-form-for-general-inquiries-alongside-existing-phone-email-and-service-area-information-and-include-a-map-section-showing-tinsukia-and-doomdooma-service-coverage",
+      "title": "Enhance the Contact page by adding a contact form for general inquiries alongside existing phone, email, and service area information, and include a map section showing Tinsukia and Doomdooma service coverage",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-prominent-banner-or-notification-section-on-homepage-encouraging-users-to-share-the-preview-link-and-provide-feedback-before-final-launch",
+      "title": "Add a prominent banner or notification section on HomePage encouraging users to share the preview link and provide feedback before final launch",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-diagnose-and-resolve-the-deployment-link-connectivity-issue-preventing-the-website-from-being-accessible-at-https-quickkaamservices-icp0-io",
+      "title": "Diagnose and resolve the deployment link connectivity issue preventing the website from being accessible at https://quickkaamservices.icp0.io",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-phone-number-in-ctabuttons-component-to-8136009930-for-the-call-now-button",
+      "title": "Update the phone number in CTAButtons component to 8136009930 for the Call Now button",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-whatsapp-number-in-ctabuttons-component-to-8136009930",
+      "title": "Update the WhatsApp number in CTAButtons component to 8136009930",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-phone-number-in-footer-component-to-display-8136009930",
+      "title": "Update the phone number in Footer component to display 8136009930",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-email-address-in-footer-component-to-ajayyadavddm-gmail-com",
+      "title": "Update the email address in Footer component to ajayyadavddm@gmail.com",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-phone-number-in-contactpage-to-display-8136009930-in-the-contact-details-section",
+      "title": "Update the phone number in ContactPage to display 8136009930 in the contact details section",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-email-address-in-contactpage-to-display-ajayyadavddm-gmail-com-in-the-contact-details-section",
+      "title": "Update the email address in ContactPage to display ajayyadavddm@gmail.com in the contact details section",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-whatsapp-booking-links-in-servicespage-to-use-phone-number-8136009930-for-all-six-service-categories",
+      "title": "Update WhatsApp booking links in ServicesPage to use phone number 8136009930 for all six service categories",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Home page with headline, subheading, and CTA buttons (Call Now, WhatsApp, Book Now)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Services page listing 6 labour categories (Mason, Electrician, Plumber, Painter, Construction Helper, Daily Wage Labour)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Booking page with customer form (name, phone, location, work type, date, description) and ₹300 advance payment button",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "About page with founder story",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Contact page with phone, email, and service areas",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "UPI/online payment integration for ₹300 booking fee",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Mobile-friendly responsive design with blue and orange color theme",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "SEO optimization with local keywords (Tinsukia, Doomdooma, Assam labour service)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Create a Services page listing six labour categories: Mason, Electrician, Plumber, Painter, Construction Helper, and Daily Wage Labour",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Create an About page with founder story describing a local Assam entrepreneur connecting verified workers with customers",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Create a Contact page displaying phone number, business email, and service areas (Tinsukia & Doomdooma)",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Verify that the canister deployment configuration meets Internet Computer domain requirements (5-50 characters, letters/numbers/hyphens only)",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Ensure all frontend routes and pages load correctly after deployment fix",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Test backend actor connectivity and verify all API endpoints are responding correctly after deployment",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Update contact information with phone number 8136009930 and email ajayyadavddm@gmail.com",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Ajay Labour Service",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
