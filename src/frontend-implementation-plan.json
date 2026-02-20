@@ -1,110 +1,46 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update contact information with phone and email",
+  "title": "Configure Super Admin with Full Access Rights - Frontend Implementation",
   "requirements": [
     {
-      "id": "REQ-22",
-      "summary": "Update the phone number in CTAButtons component to 8136009930 for the Call Now button",
+      "id": "REQ-49",
+      "summary": "Update AdminGuard component to handle super admin authentication flow and display appropriate messaging",
       "acceptanceCriteria": [
-        "Call Now button in CTAButtons component uses tel:+918136009930",
-        "Phone link works correctly on mobile devices"
+        "Component correctly identifies when logged-in user is the super admin",
+        "Admin dashboard becomes accessible immediately after super admin authentication",
+        "No access denied message appears for the super admin principal"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/CTAButtons.tsx",
+          "path": "frontend/src/components/AdminGuard.tsx",
           "operation": "modify",
-          "description": "Update the Call Now button href to use tel:+918136009930. Maintain the existing button styling and structure while updating only the phone number in the tel: link."
+          "description": "Add console logging to track authentication flow and admin status checks. Log the current principal ID, the result of isCallerAdmin backend check, and any authorization failures. Display loading states appropriately while checking super admin status. Ensure the component grants immediate access when the backend confirms super admin role without showing access denied messages."
         }
       ]
     },
     {
-      "id": "REQ-23",
-      "summary": "Update the WhatsApp number in CTAButtons component to 8136009930",
+      "id": "REQ-50",
+      "summary": "Add console logging throughout the super admin configuration process for debugging",
       "acceptanceCriteria": [
-        "WhatsApp button uses the number 918136009930 in the wa.me URL",
-        "Pre-filled WhatsApp messages open correctly with the new number"
+        "Frontend logs display the authenticated principal and admin check results",
+        "Error logs provide clear information if super admin setup fails"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/CTAButtons.tsx",
+          "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Update the WhatsApp button to use wa.me/918136009930 in the href. Preserve the existing optional pre-filled service and location message parameters while updating only the phone number portion of the URL."
-        }
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "summary": "Update the phone number in Footer component to display 8136009930",
-      "acceptanceCriteria": [
-        "Footer displays +91 8136009930 as the contact phone number",
-        "Phone number is clickable and opens phone dialer on mobile"
-      ],
-      "file_operations": [
+          "description": "Add console logging to useIsCallerAdmin hook to capture the principal ID being checked, the backend response (true/false), and any errors during the admin verification process. Log before making the backend call and after receiving the response."
+        },
         {
-          "path": "frontend/src/components/Footer.tsx",
+          "path": "frontend/src/hooks/useActor.ts",
           "operation": "modify",
-          "description": "Update the phone number in the contact details section to display +91 8136009930. Ensure the phone number is wrapped in a clickable link using tel:+918136009930 format. Maintain consistent formatting with the +91 prefix for display."
-        }
-      ]
-    },
-    {
-      "id": "REQ-25",
-      "summary": "Update the email address in Footer component to ajayyadavddm@gmail.com",
-      "acceptanceCriteria": [
-        "Footer displays ajayyadavddm@gmail.com as the contact email",
-        "Email is clickable and opens default email client with correct recipient"
-      ],
-      "file_operations": [
+          "description": "Add console logging to capture the authenticated principal ID when the actor is initialized and when authentication state changes. Log any errors during actor initialization or authentication failures that could prevent super admin setup."
+        },
         {
-          "path": "frontend/src/components/Footer.tsx",
+          "path": "frontend/src/components/Layout.tsx",
           "operation": "modify",
-          "description": "Update the email address in the contact details section to ajayyadavddm@gmail.com. Ensure the email is wrapped in a mailto: link that opens the default email client with the correct recipient address."
-        }
-      ]
-    },
-    {
-      "id": "REQ-26",
-      "summary": "Update the phone number in ContactPage to display 8136009930 in the contact details section",
-      "acceptanceCriteria": [
-        "Contact page shows +91 8136009930 in contact details",
-        "Phone number is properly formatted and clickable"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Update the phone number in the contact details section to display +91 8136009930. Ensure the phone number is wrapped in a clickable tel: link using tel:+918136009930 format. Maintain consistent formatting with the +91 prefix for visual display."
-        }
-      ]
-    },
-    {
-      "id": "REQ-27",
-      "summary": "Update the email address in ContactPage to display ajayyadavddm@gmail.com in the contact details section",
-      "acceptanceCriteria": [
-        "Contact page shows ajayyadavddm@gmail.com in contact details",
-        "Email address is clickable and formatted correctly"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Update the email address in the contact details section to ajayyadavddm@gmail.com. Ensure the email is wrapped in a mailto: link that opens the default email client with the correct recipient address."
-        }
-      ]
-    },
-    {
-      "id": "REQ-28",
-      "summary": "Update WhatsApp booking links in ServicesPage to use phone number 8136009930 for all six service categories",
-      "acceptanceCriteria": [
-        "All service category WhatsApp links use 918136009930",
-        "Pre-filled service booking messages open correctly with the new number"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Update all WhatsApp booking links across the six service categories (mason, electrician, plumber, painter, construction helper, daily wage labour) to use wa.me/918136009930. Preserve the existing pre-filled message templates for each service type while updating only the phone number portion of the URLs."
+          "description": "Add console logging in the authentication flow to track login/logout events, including the principal ID of the logged-in user. Log when authentication succeeds, when it fails, and when the user logs out. This helps debug the super admin authentication process end-to-end."
         }
       ]
     }

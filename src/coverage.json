@@ -1,103 +1,70 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-19T14:14:31.111Z",
+  "generatedAt": "2026-02-19T15:32:49.211Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 7,
-    "implemented": 7,
+    "total": 4,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-22",
-        "summary": "Update the phone number in CTAButtons component to 8136009930 for the Call Now button",
+        "id": "REQ-47",
+        "summary": "Update backend main.mo to capture the caller's principal from the current authenticated Internet Identity session and grant super admin role with full access rights",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-48",
+        "summary": "Add a backend method to set or update the super admin principal that can only be called once during initial setup or by the current super admin",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-49",
+        "summary": "Update frontend AdminGuard component to handle super admin authentication flow and display appropriate messaging when super admin access is granted",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/CTAButtons.tsx"
+          "frontend/src/components/AdminGuard.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/CTAButtons.tsx"
+          "frontend/src/components/AdminGuard.tsx"
         ]
       },
       {
-        "id": "REQ-23",
-        "summary": "Update the WhatsApp number in CTAButtons component to 8136009930",
+        "id": "REQ-50",
+        "summary": "Add console logging throughout the super admin configuration process to capture principal IDs, authentication status, and any authorization failures for debugging",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/CTAButtons.tsx"
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/hooks/useActor.ts",
+          "frontend/src/components/Layout.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/CTAButtons.tsx"
-        ]
-      },
-      {
-        "id": "REQ-24",
-        "summary": "Update the phone number in Footer component to display 8136009930",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-25",
-        "summary": "Update the email address in Footer component to ajayyadavddm@gmail.com",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-26",
-        "summary": "Update the phone number in ContactPage to display 8136009930 in the contact details section",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ContactPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ContactPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-27",
-        "summary": "Update the email address in ContactPage to display ajayyadavddm@gmail.com in the contact details section",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ContactPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ContactPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-28",
-        "summary": "Update WhatsApp booking links in ServicesPage to use phone number 8136009930 for all six service categories",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ServicesPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ServicesPage.tsx"
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/components/Layout.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/CTAButtons.tsx",
-    "frontend/src/components/Footer.tsx",
-    "frontend/src/pages/ContactPage.tsx",
-    "frontend/src/pages/ServicesPage.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/AdminGuard.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

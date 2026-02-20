@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { SEOHead } from '../components/SEOHead';
 import { useCreateBooking } from '../hooks/useCreateBooking';
 import { useCreateCheckoutSession } from '../hooks/useCreateCheckoutSession';
-import { AlertCircle, Loader2, MessageCircle } from 'lucide-react';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
+import { AlertCircle, Loader2, MessageCircle, LogIn, CreditCard, Smartphone } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Alert, AlertDescription, AlertTitle } from '../components/ui/alert';
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
@@ -16,6 +19,11 @@ export default function BookingPage() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [bookingId, setBookingId] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const { identity, login, loginStatus } = useInternetIdentity();
+  const isAuthenticated = !!identity;
+  const isLoggingIn = loginStatus === 'logging-in';
 
   const createBooking = useCreateBooking();
   const createCheckoutSession = useCreateCheckoutSession();
@@ -47,8 +55,25 @@ export default function BookingPage() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleLogin = async () => {
+    try {
+      console.log('[BookingPage] Initiating login');
+      login();
+    } catch (error: any) {
+      console.error('[BookingPage] Login error:', error);
+      setErrorMessage('Failed to login. Please try again.');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Check authentication first
+    if (!isAuthenticated) {
+      setErrorMessage('Please login to create a booking. Click the Login button above to continue.');
+      return;
+    }
 
     if (!validateForm()) return;
 
@@ -56,15 +81,23 @@ export default function BookingPage() {
       const newBookingId = crypto.randomUUID();
       setBookingId(newBookingId);
 
+      console.log('[BookingPage] Creating booking with data:', {
+        bookingId: newBookingId,
+        ...formData,
+      });
+
       await createBooking.mutateAsync({
         bookingId: newBookingId,
         ...formData,
       });
 
+      console.log('[BookingPage] Booking created successfully:', newBookingId);
+
       // Store bookingId for payment success page
       sessionStorage.setItem('bookingId', newBookingId);
 
       // Create checkout session
+      console.log('[BookingPage] Creating checkout session...');
       const session = await createCheckoutSession.mutateAsync([
         {
           productName: 'Advance Booking Fee',
@@ -75,15 +108,49 @@ export default function BookingPage() {
         },
       ]);
 
+      console.log('[BookingPage] Checkout session created:', session);
+
       if (!session?.url) {
         throw new Error('Payment session URL not available');
       }
 
       // Redirect to Stripe checkout
+      console.log('[BookingPage] Redirecting to Stripe:', session.url);
       window.location.href = session.url;
-    } catch (error) {
-      console.error('Booking error:', error);
-      alert('Failed to create booking. Please try again.');
+    } catch (error: any) {
+      console.error('[BookingPage] Booking error details:', {
+        error,
+        message: error?.message,
+        stack: error?.stack,
+        name: error?.name,
+      });
+
+      // Categorize and display user-friendly error messages
+      let userMessage = 'Failed to create booking. Please try again.';
+
+      if (error?.message) {
+        const errorMsg = error.message.toLowerCase();
+        
+        if (errorMsg.includes('unauthorized') || errorMsg.includes('permission')) {
+          userMessage = 'Authentication error. Please logout and login again to continue.';
+        } else if (errorMsg.includes('actor not available')) {
+          userMessage = 'Connection error. Please refresh the page and try again.';
+        } else if (errorMsg.includes('cannot be empty') || errorMsg.includes('too long')) {
+          userMessage = `Validation error: ${error.message}`;
+        } else if (errorMsg.includes('stripe') && errorMsg.includes('configured')) {
+          userMessage = 'Payment system is being configured. Please try again in a few minutes or use WhatsApp booking below.';
+        } else if (errorMsg.includes('upi')) {
+          userMessage = 'UPI payment configuration error. Please try again or contact support at +91 8136009930.';
+        } else if (errorMsg.includes('payment')) {
+          userMessage = 'Payment system error. Please try again or use WhatsApp booking below.';
+        } else if (errorMsg.includes('network') || errorMsg.includes('fetch')) {
+          userMessage = 'Network error. Please check your connection and try again.';
+        } else {
+          userMessage = `Error: ${error.message}`;
+        }
+      }
+
+      setErrorMessage(userMessage);
     }
   };
 
@@ -95,6 +162,10 @@ export default function BookingPage() {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
+    // Clear general error message when user starts editing
+    if (errorMessage) {
+      setErrorMessage('');
+    }
   };
 
   const handleWhatsAppBooking = () => {
@@ -102,7 +173,7 @@ export default function BookingPage() {
       formData.location ? ` in ${formData.location}` : ''
     }. Please contact me.`;
     window.open(
-      `https://wa.me/919876543210?text=${encodeURIComponent(message)}`,
+      `https://wa.me/918136009930?text=${encodeURIComponent(message)}`,
       '_blank'
     );
   };
@@ -126,6 +197,59 @@ export default function BookingPage() {
                 Fill in the details below to book verified labour service
               </p>
             </div>
+
+            {/* Authentication Alert */}
+            {!isAuthenticated && (
+              <Alert className="mb-6 border-labour-blue/50 bg-labour-blue/5">
+                <LogIn className="h-4 w-4 text-labour-blue" />
+                <AlertTitle className="text-labour-blue">Login Required</AlertTitle>
+                <AlertDescription className="flex items-center justify-between">
+                  <span>You need to login before creating a booking.</span>
+                  <Button
+                    onClick={handleLogin}
+                    disabled={isLoggingIn}
+                    size="sm"
+                    className="ml-4 bg-labour-blue hover:bg-labour-blue/90"
+                  >
+                    {isLoggingIn ? (
+                      <>
+                        <Loader2 className="mr-2 h-3 w-3 animate-spin" />
+                        Logging in...
+                      </>
+                    ) : (
+                      'Login Now'
+                    )}
+                  </Button>
+                </AlertDescription>
+              </Alert>
+            )}
+
+            {/* Payment Methods Info */}
+            <div className="mb-6 rounded-lg bg-gradient-to-r from-labour-blue/10 to-labour-orange/10 p-4 border border-labour-blue/20">
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 mt-0.5">
+                  <div className="flex space-x-2">
+                    <CreditCard className="h-5 w-5 text-labour-blue" />
+                    <Smartphone className="h-5 w-5 text-labour-orange" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-sm mb-1">Multiple Payment Options Available</h3>
+                  <p className="text-xs text-muted-foreground">
+                    Pay securely with Credit/Debit Cards, UPI (including 8136009930@kotak811), Net Banking, and Wallets through our secure Stripe payment gateway.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Error Alert */}
+            {errorMessage && (
+              <Alert variant="destructive" className="mb-6">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Booking Failed</AlertTitle>
+                <AlertDescription>{errorMessage}</AlertDescription>
+              </Alert>
+            )}
 
             <div className="rounded-xl bg-card p-6 shadow-lg border border-border/40 md:p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -269,7 +393,7 @@ export default function BookingPage() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || !isAuthenticated}
                   className="w-full rounded-full bg-labour-blue px-6 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:bg-labour-blue/90 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
@@ -277,13 +401,15 @@ export default function BookingPage() {
                       <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                       Processing...
                     </span>
+                  ) : !isAuthenticated ? (
+                    'Login Required to Book'
                   ) : (
                     'Proceed to Payment (₹300)'
                   )}
                 </button>
 
                 <div className="text-center text-sm text-muted-foreground">
-                  <p>Secure payment powered by Stripe</p>
+                  <p>Secure payment powered by Stripe • UPI, Cards, Net Banking accepted</p>
                 </div>
               </form>
 
@@ -313,7 +439,7 @@ export default function BookingPage() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start">
                   <span className="mr-2 mt-1 h-1.5 w-1.5 rounded-full bg-labour-blue flex-shrink-0"></span>
-                  <span>Pay ₹300 advance booking fee securely</span>
+                  <span>Pay ₹300 advance booking fee securely via UPI, Card, or Net Banking</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 mt-1 h-1.5 w-1.5 rounded-full bg-labour-blue flex-shrink-0"></span>

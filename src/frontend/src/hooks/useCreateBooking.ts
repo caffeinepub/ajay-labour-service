@@ -16,19 +16,49 @@ export function useCreateBooking() {
 
   return useMutation({
     mutationFn: async (data: BookingData) => {
-      if (!actor) throw new Error('Actor not available');
-      
-      await actor.createBooking(
-        data.bookingId,
-        data.name,
-        data.phoneNumber,
-        data.location,
-        data.typeOfWork,
-        data.dateRequired,
-        data.description
-      );
-      
-      return data.bookingId;
+      console.log('[useCreateBooking] Starting booking creation...');
+      console.log('[useCreateBooking] Actor available:', !!actor);
+      console.log('[useCreateBooking] Booking data:', data);
+
+      if (!actor) {
+        console.error('[useCreateBooking] Actor not available');
+        throw new Error('Actor not available');
+      }
+
+      try {
+        console.log('[useCreateBooking] Calling backend createBooking...');
+        const startTime = Date.now();
+
+        await actor.createBooking(
+          data.bookingId,
+          data.name,
+          data.phoneNumber,
+          data.location,
+          data.typeOfWork,
+          data.dateRequired,
+          data.description
+        );
+
+        const duration = Date.now() - startTime;
+        console.log(`[useCreateBooking] Booking created successfully in ${duration}ms`);
+        console.log('[useCreateBooking] Booking ID:', data.bookingId);
+
+        return data.bookingId;
+      } catch (error: any) {
+        console.error('[useCreateBooking] Error creating booking:', {
+          error,
+          message: error?.message,
+          name: error?.name,
+          stack: error?.stack,
+          bookingData: data,
+        });
+
+        // Re-throw with more context
+        if (error?.message) {
+          throw new Error(error.message);
+        }
+        throw new Error('Failed to create booking. Please try again.');
+      }
     },
   });
 }

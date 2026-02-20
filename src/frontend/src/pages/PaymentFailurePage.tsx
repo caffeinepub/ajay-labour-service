@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SEOHead } from '../components/SEOHead';
-import { XCircle } from 'lucide-react';
+import { XCircle, AlertTriangle, Smartphone, CreditCard, Wifi } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
 
 export default function PaymentFailurePage() {
@@ -36,30 +36,63 @@ export default function PaymentFailurePage() {
                   cancellation.
                 </p>
 
+                {/* Common Issues */}
+                <div className="mb-8 rounded-lg bg-yellow-50 dark:bg-yellow-950/20 p-4 border border-yellow-200 dark:border-yellow-800">
+                  <div className="flex items-start space-x-3">
+                    <AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0 mt-0.5" />
+                    <div className="text-left">
+                      <h3 className="font-semibold text-sm mb-2 text-yellow-900 dark:text-yellow-100">
+                        Common Payment Issues
+                      </h3>
+                      <ul className="space-y-1 text-xs text-yellow-800 dark:text-yellow-200">
+                        <li className="flex items-center space-x-2">
+                          <Smartphone className="h-3 w-3" />
+                          <span>UPI app not responding or timeout</span>
+                        </li>
+                        <li className="flex items-center space-x-2">
+                          <CreditCard className="h-3 w-3" />
+                          <span>Insufficient balance or card limit exceeded</span>
+                        </li>
+                        <li className="flex items-center space-x-2">
+                          <Wifi className="h-3 w-3" />
+                          <span>Poor internet connection during payment</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-4 text-left mb-8">
                   <h3 className="font-semibold text-lg">What you can do:</h3>
                   <ul className="space-y-3 text-sm text-muted-foreground">
                     <li className="flex items-start space-x-2">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
                       <span>
-                        Try booking again with a different payment method
-                      </span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
-                      <span>Check your internet connection and try again</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
-                      <span>
-                        Contact your bank if you believe the payment should have
-                        succeeded
+                        <strong>Try again with UPI:</strong> Use your UPI ID (e.g., 8136009930@kotak811) or scan QR code in the payment page
                       </span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
                       <span>
-                        Call us at +91 98765 43210 for assistance with booking
+                        <strong>Use a different payment method:</strong> Try Credit/Debit Card or Net Banking
+                      </span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
+                      <span>
+                        <strong>Check your internet:</strong> Ensure stable connection and try again
+                      </span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
+                      <span>
+                        <strong>Contact your bank:</strong> If you believe the payment should have succeeded
+                      </span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-orange flex-shrink-0"></span>
+                      <span>
+                        <strong>Call us for help:</strong> Reach us at +91 8136009930 for booking assistance
                       </span>
                     </li>
                   </ul>
@@ -97,10 +130,10 @@ export default function PaymentFailurePage() {
                   </Link>{' '}
                   or call{' '}
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+918136009930"
                     className="text-labour-blue hover:underline"
                   >
-                    +91 98765 43210
+                    +91 8136009930
                   </a>
                 </p>
               </div>

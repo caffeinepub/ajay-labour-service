@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SEOHead } from '../components/SEOHead';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import { CheckCircle, Loader2, CreditCard, Smartphone } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
 import { useUpdateBookingPaymentStatus } from '../hooks/useUpdateBookingPaymentStatus';
 
@@ -17,12 +17,13 @@ export default function PaymentSuccessPage() {
       // Update payment status in backend
       updatePaymentStatus.mutate(storedBookingId, {
         onSuccess: () => {
+          console.log('[PaymentSuccess] Payment status updated successfully for UPI/Card payment');
           setIsProcessing(false);
           // Clear the stored booking ID
           sessionStorage.removeItem('bookingId');
         },
         onError: (error) => {
-          console.error('Failed to update payment status:', error);
+          console.error('[PaymentSuccess] Failed to update payment status:', error);
           setIsProcessing(false);
         },
       });
@@ -66,6 +67,15 @@ export default function PaymentSuccessPage() {
                     confirmed and we have received your advance payment of ₹300.
                   </p>
 
+                  {/* Payment Method Info */}
+                  <div className="mb-6 rounded-lg bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 p-4 border border-green-200 dark:border-green-800">
+                    <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
+                      <CreditCard className="h-4 w-4 text-labour-blue" />
+                      <Smartphone className="h-4 w-4 text-labour-orange" />
+                      <span>Payment processed securely via Stripe</span>
+                    </div>
+                  </div>
+
                   {bookingId && (
                     <div className="mb-6 rounded-lg bg-muted/50 p-4">
                       <p className="text-sm text-muted-foreground mb-1">
@@ -103,7 +113,7 @@ export default function PaymentSuccessPage() {
                       <li className="flex items-start space-x-2">
                         <span className="mt-1 h-1.5 w-1.5 rounded-full bg-labour-blue flex-shrink-0"></span>
                         <span>
-                          For any queries, feel free to contact us at +91 98765 43210.
+                          For any queries, feel free to contact us at +91 8136009930.
                         </span>
                       </li>
                     </ul>

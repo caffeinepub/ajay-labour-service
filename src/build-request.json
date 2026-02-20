@@ -1,137 +1,83 @@
 {
   "kind": "build_request",
-  "title": "Update contact information with phone and email",
-  "priority": "normal",
+  "title": "Configure logged-in user as super admin with full access rights",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-22",
-      "text": "Update the phone number in CTAButtons component to 8136009930 for the Call Now button",
-      "target": "frontend",
+      "id": "REQ-47",
+      "text": "Update backend main.mo to capture the caller's principal from the current authenticated Internet Identity session and grant super admin role with full access rights",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-latest"
         ],
         "quotes": [
-          "add my contact number 8136009930"
+          "i have logged in . set this identity as super admin."
         ]
       },
       "acceptanceCriteria": [
-        "Call Now button in CTAButtons component uses tel:+918136009930",
-        "Phone link works correctly on mobile devices"
+        "The isCallerAdmin method returns true for the configured super admin principal",
+        "Super admin principal is persisted in stable storage across canister upgrades",
+        "Only the super admin principal can access all admin dashboard features without restrictions"
       ]
     },
     {
-      "id": "REQ-23",
-      "text": "Update the WhatsApp number in CTAButtons component to 8136009930",
-      "target": "frontend",
+      "id": "REQ-48",
+      "text": "Add a backend method to set or update the super admin principal that can only be called once during initial setup or by the current super admin",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "add my contact number 8136009930"
+          "msg-latest"
         ]
       },
       "acceptanceCriteria": [
-        "WhatsApp button uses the number 918136009930 in the wa.me URL",
-        "Pre-filled WhatsApp messages open correctly with the new number"
+        "Method validates that caller is either setting initial super admin (when none exists) or is the current super admin",
+        "Returns success confirmation when super admin is successfully configured",
+        "Returns descriptive error if unauthorized principal attempts to set super admin"
       ]
     },
     {
-      "id": "REQ-24",
-      "text": "Update the phone number in Footer component to display 8136009930",
+      "id": "REQ-49",
+      "text": "Update frontend AdminGuard component to handle super admin authentication flow and display appropriate messaging when super admin access is granted",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "add my contact number 8136009930"
+          "msg-latest"
         ]
       },
       "acceptanceCriteria": [
-        "Footer displays +91 8136009930 as the contact phone number",
-        "Phone number is clickable and opens phone dialer on mobile"
+        "Component correctly identifies when logged-in user is the super admin",
+        "Admin dashboard becomes accessible immediately after super admin authentication",
+        "No access denied message appears for the super admin principal"
       ]
     },
     {
-      "id": "REQ-25",
-      "text": "Update the email address in Footer component to ajayyadavddm@gmail.com",
-      "target": "frontend",
+      "id": "REQ-50",
+      "text": "Add console logging throughout the super admin configuration process to capture principal IDs, authentication status, and any authorization failures for debugging",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "email ajayyadavddm@gmail.com"
+          "msg-latest"
         ]
       },
       "acceptanceCriteria": [
-        "Footer displays ajayyadavddm@gmail.com as the contact email",
-        "Email is clickable and opens default email client with correct recipient"
-      ]
-    },
-    {
-      "id": "REQ-26",
-      "text": "Update the phone number in ContactPage to display 8136009930 in the contact details section",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "add my contact number 8136009930"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Contact page shows +91 8136009930 in contact details",
-        "Phone number is properly formatted and clickable"
-      ]
-    },
-    {
-      "id": "REQ-27",
-      "text": "Update the email address in ContactPage to display ajayyadavddm@gmail.com in the contact details section",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "email ajayyadavddm@gmail.com"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Contact page shows ajayyadavddm@gmail.com in contact details",
-        "Email address is clickable and formatted correctly"
-      ]
-    },
-    {
-      "id": "REQ-28",
-      "text": "Update WhatsApp booking links in ServicesPage to use phone number 8136009930 for all six service categories",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "add my contact number 8136009930"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All service category WhatsApp links use 918136009930",
-        "Pre-filled service booking messages open correctly with the new number"
+        "Backend logs show the principal being configured as super admin",
+        "Frontend logs display the authenticated principal and admin check results",
+        "Error logs provide clear information if super admin setup fails"
       ]
     }
   ],
   "constraints": [
-    "Do not modify frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts",
-    "Maintain consistent phone number format (+91 prefix) across all display locations",
-    "Preserve existing WhatsApp message templates, only update the phone number"
+    "Maintain single-actor architecture with all logic in backend/main.mo",
+    "Use existing Internet Identity authentication system - do not modify useInternetIdentity.ts",
+    "Preserve existing role-based access control structure",
+    "Do not create email-based authentication system"
   ],
   "nonGoals": [
-    "Changing the business name or service areas",
-    "Modifying the booking form structure or payment flow",
-    "Updating SEO metadata or page descriptions"
+    "Implementing email/password login system",
+    "Creating multiple admin roles beyond super admin",
+    "Building admin user management interface",
+    "Modifying Internet Identity authentication flow"
   ],
   "imageRequirements": {
     "required": [],

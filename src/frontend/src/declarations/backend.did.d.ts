@@ -11,18 +11,19 @@ import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
 export interface Booking {
-  'paymentStatus' : boolean,
   'bookingId' : string,
+  'owner' : [] | [Principal],
   'name' : string,
   'description' : string,
+  'isPaid' : boolean,
   'dateRequired' : string,
   'phoneNumber' : string,
   'typeOfWork' : string,
   'location' : string,
 }
-export interface ServiceArea {
-  'location_coordinates' : { 'latitude' : number, 'longitude' : number },
+export interface ServiceLocation {
   'name' : string,
+  'coordinates' : { 'latitude' : number, 'longitude' : number },
 }
 export interface ShoppingItem {
   'productName' : string,
@@ -48,6 +49,12 @@ export interface TransformationOutput {
   'body' : Uint8Array,
   'headers' : Array<http_header>,
 }
+export interface UpiPaymentRequest {
+  'customerName' : string,
+  'description' : string,
+  'upiId' : string,
+  'amount' : bigint,
+}
 export interface UserProfile { 'name' : string, 'phoneNumber' : string }
 export type UserRole = { 'admin' : null } |
   { 'user' : null } |
@@ -60,7 +67,7 @@ export interface http_request_result {
 }
 export interface _SERVICE {
   '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
-  'addServiceArea' : ActorMethod<[string, number, number], undefined>,
+  'addServiceLocation' : ActorMethod<[string, number, number], undefined>,
   'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
   'createBooking' : ActorMethod<
     [string, string, string, string, string, string, string],
@@ -70,16 +77,34 @@ export interface _SERVICE {
     [Array<ShoppingItem>, string, string],
     string
   >,
+  'createUpiOrder' : ActorMethod<[Array<ShoppingItem>, string, string], string>,
   'getAllBookings' : ActorMethod<[], Array<Booking>>,
-  'getAllServiceAreas' : ActorMethod<[], Array<ServiceArea>>,
+  'getAllServiceLocations' : ActorMethod<[], Array<ServiceLocation>>,
+  'getBooking' : ActorMethod<[string], [] | [Booking]>,
+  'getBookingMetrics' : ActorMethod<
+    [],
+    {
+      'pendingPayments' : bigint,
+      'totalBookings' : bigint,
+      'totalRevenue' : bigint,
+      'paidBookings' : bigint,
+    }
+  >,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
   'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getStripeSessionStatus' : ActorMethod<[string], StripeSessionStatus>,
+  'getSuperAdmin' : ActorMethod<[], [] | [Principal]>,
+  'getUpiBookingsCount' : ActorMethod<[], bigint>,
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
   'isStripeConfigured' : ActorMethod<[], boolean>,
+  'processUpiPayment' : ActorMethod<
+    [UpiPaymentRequest, string, string],
+    string
+  >,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
   'setStripeConfiguration' : ActorMethod<[StripeConfiguration], undefined>,
+  'setSuperAdmin' : ActorMethod<[Principal], undefined>,
   'submitContactForm' : ActorMethod<[string, string, string, string], string>,
   'transform' : ActorMethod<[TransformationInput], TransformationOutput>,
   'updateBookingPaymentStatus' : ActorMethod<[string], undefined>,

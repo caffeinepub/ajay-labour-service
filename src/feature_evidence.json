@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-phone-number-in-ctabuttons-component-to-8136009930-for-the-call-now-button",
-      "featureTitle": "Update the phone number in CTAButtons component to 8136009930 for the Call Now button",
+      "featureId": "feature-update-frontend-adminguard-component-to-handle-super-admin-authentication-flow-and-display-appropriate-messaging-when-super-admin-access-is-granted",
+      "featureTitle": "Update frontend AdminGuard component to handle super admin authentication flow and display appropriate messaging when super admin access is granted",
       "files": [
-        "frontend/src/components/CTAButtons.tsx"
+        "frontend/src/components/AdminGuard.tsx"
       ],
       "components": [
         "stripe@3.0.0",
@@ -18,15 +18,16 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-22"
+        "REQ-49"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-whatsapp-number-in-ctabuttons-component-to-8136009930",
-      "featureTitle": "Update the WhatsApp number in CTAButtons component to 8136009930",
+      "featureId": "feature-add-console-logging-throughout-the-super-admin-configuration-process-to-capture-principal-ids-authentication-status-and-any-authorization-failures-for-debugging",
+      "featureTitle": "Add console logging throughout the super admin configuration process to capture principal IDs, authentication status, and any authorization failures for debugging",
       "files": [
-        "frontend/src/components/CTAButtons.tsx"
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "stripe@3.0.0",
@@ -39,112 +40,7 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-23"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-phone-number-in-footer-component-to-display-8136009930",
-      "featureTitle": "Update the phone number in Footer component to display 8136009930",
-      "files": [
-        "frontend/src/components/Footer.tsx"
-      ],
-      "components": [
-        "stripe@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "http-outcalls@3.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-24"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-email-address-in-footer-component-to-ajayyadavddm-gmail-com",
-      "featureTitle": "Update the email address in Footer component to ajayyadavddm@gmail.com",
-      "files": [
-        "frontend/src/components/Footer.tsx"
-      ],
-      "components": [
-        "stripe@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "http-outcalls@3.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-25"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-phone-number-in-contactpage-to-display-8136009930-in-the-contact-details-section",
-      "featureTitle": "Update the phone number in ContactPage to display 8136009930 in the contact details section",
-      "files": [
-        "frontend/src/pages/ContactPage.tsx"
-      ],
-      "components": [
-        "stripe@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "http-outcalls@3.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-26"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-email-address-in-contactpage-to-display-ajayyadavddm-gmail-com-in-the-contact-details-section",
-      "featureTitle": "Update the email address in ContactPage to display ajayyadavddm@gmail.com in the contact details section",
-      "files": [
-        "frontend/src/pages/ContactPage.tsx"
-      ],
-      "components": [
-        "stripe@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "http-outcalls@3.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-27"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-whatsapp-booking-links-in-servicespage-to-use-phone-number-8136009930-for-all-six-service-categories",
-      "featureTitle": "Update WhatsApp booking links in ServicesPage to use phone number 8136009930 for all six service categories",
-      "files": [
-        "frontend/src/pages/ServicesPage.tsx"
-      ],
-      "components": [
-        "stripe@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "http-outcalls@3.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-28"
+        "REQ-50"
       ],
       "confidence": "high"
     }

@@ -21,21 +21,22 @@ export const ShoppingItem = IDL.Record({
   'productDescription' : IDL.Text,
 });
 export const Booking = IDL.Record({
-  'paymentStatus' : IDL.Bool,
   'bookingId' : IDL.Text,
+  'owner' : IDL.Opt(IDL.Principal),
   'name' : IDL.Text,
   'description' : IDL.Text,
+  'isPaid' : IDL.Bool,
   'dateRequired' : IDL.Text,
   'phoneNumber' : IDL.Text,
   'typeOfWork' : IDL.Text,
   'location' : IDL.Text,
 });
-export const ServiceArea = IDL.Record({
-  'location_coordinates' : IDL.Record({
+export const ServiceLocation = IDL.Record({
+  'name' : IDL.Text,
+  'coordinates' : IDL.Record({
     'latitude' : IDL.Float64,
     'longitude' : IDL.Float64,
   }),
-  'name' : IDL.Text,
 });
 export const UserProfile = IDL.Record({
   'name' : IDL.Text,
@@ -47,6 +48,12 @@ export const StripeSessionStatus = IDL.Variant({
     'response' : IDL.Text,
   }),
   'failed' : IDL.Record({ 'error' : IDL.Text }),
+});
+export const UpiPaymentRequest = IDL.Record({
+  'customerName' : IDL.Text,
+  'description' : IDL.Text,
+  'upiId' : IDL.Text,
+  'amount' : IDL.Nat,
 });
 export const StripeConfiguration = IDL.Record({
   'allowedCountries' : IDL.Vec(IDL.Text),
@@ -73,7 +80,7 @@ export const TransformationOutput = IDL.Record({
 
 export const idlService = IDL.Service({
   '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
-  'addServiceArea' : IDL.Func([IDL.Text, IDL.Float64, IDL.Float64], [], []),
+  'addServiceLocation' : IDL.Func([IDL.Text, IDL.Float64, IDL.Float64], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
   'createBooking' : IDL.Func(
       [IDL.Text, IDL.Text, IDL.Text, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
@@ -85,11 +92,35 @@ export const idlService = IDL.Service({
       [IDL.Text],
       [],
     ),
+  'createUpiOrder' : IDL.Func(
+      [IDL.Vec(ShoppingItem), IDL.Text, IDL.Text],
+      [IDL.Text],
+      [],
+    ),
   'getAllBookings' : IDL.Func([], [IDL.Vec(Booking)], ['query']),
-  'getAllServiceAreas' : IDL.Func([], [IDL.Vec(ServiceArea)], ['query']),
+  'getAllServiceLocations' : IDL.Func(
+      [],
+      [IDL.Vec(ServiceLocation)],
+      ['query'],
+    ),
+  'getBooking' : IDL.Func([IDL.Text], [IDL.Opt(Booking)], ['query']),
+  'getBookingMetrics' : IDL.Func(
+      [],
+      [
+        IDL.Record({
+          'pendingPayments' : IDL.Nat,
+          'totalBookings' : IDL.Nat,
+          'totalRevenue' : IDL.Nat,
+          'paidBookings' : IDL.Nat,
+        }),
+      ],
+      ['query'],
+    ),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getStripeSessionStatus' : IDL.Func([IDL.Text], [StripeSessionStatus], []),
+  'getSuperAdmin' : IDL.Func([], [IDL.Opt(IDL.Principal)], ['query']),
+  'getUpiBookingsCount' : IDL.Func([], [IDL.Nat], []),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
       [IDL.Opt(UserProfile)],
@@ -97,8 +128,14 @@ export const idlService = IDL.Service({
     ),
   'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
   'isStripeConfigured' : IDL.Func([], [IDL.Bool], ['query']),
+  'processUpiPayment' : IDL.Func(
+      [UpiPaymentRequest, IDL.Text, IDL.Text],
+      [IDL.Text],
+      [],
+    ),
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
   'setStripeConfiguration' : IDL.Func([StripeConfiguration], [], []),
+  'setSuperAdmin' : IDL.Func([IDL.Principal], [], []),
   'submitContactForm' : IDL.Func(
       [IDL.Text, IDL.Text, IDL.Text, IDL.Text],
       [IDL.Text],
@@ -128,21 +165,22 @@ export const idlFactory = ({ IDL }) => {
     'productDescription' : IDL.Text,
   });
   const Booking = IDL.Record({
-    'paymentStatus' : IDL.Bool,
     'bookingId' : IDL.Text,
+    'owner' : IDL.Opt(IDL.Principal),
     'name' : IDL.Text,
     'description' : IDL.Text,
+    'isPaid' : IDL.Bool,
     'dateRequired' : IDL.Text,
     'phoneNumber' : IDL.Text,
     'typeOfWork' : IDL.Text,
     'location' : IDL.Text,
   });
-  const ServiceArea = IDL.Record({
-    'location_coordinates' : IDL.Record({
+  const ServiceLocation = IDL.Record({
+    'name' : IDL.Text,
+    'coordinates' : IDL.Record({
       'latitude' : IDL.Float64,
       'longitude' : IDL.Float64,
     }),
-    'name' : IDL.Text,
   });
   const UserProfile = IDL.Record({
     'name' : IDL.Text,
@@ -154,6 +192,12 @@ export const idlFactory = ({ IDL }) => {
       'response' : IDL.Text,
     }),
     'failed' : IDL.Record({ 'error' : IDL.Text }),
+  });
+  const UpiPaymentRequest = IDL.Record({
+    'customerName' : IDL.Text,
+    'description' : IDL.Text,
+    'upiId' : IDL.Text,
+    'amount' : IDL.Nat,
   });
   const StripeConfiguration = IDL.Record({
     'allowedCountries' : IDL.Vec(IDL.Text),
@@ -177,7 +221,11 @@ export const idlFactory = ({ IDL }) => {
   
   return IDL.Service({
     '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
-    'addServiceArea' : IDL.Func([IDL.Text, IDL.Float64, IDL.Float64], [], []),
+    'addServiceLocation' : IDL.Func(
+        [IDL.Text, IDL.Float64, IDL.Float64],
+        [],
+        [],
+      ),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
     'createBooking' : IDL.Func(
         [IDL.Text, IDL.Text, IDL.Text, IDL.Text, IDL.Text, IDL.Text, IDL.Text],
@@ -189,11 +237,35 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Text],
         [],
       ),
+    'createUpiOrder' : IDL.Func(
+        [IDL.Vec(ShoppingItem), IDL.Text, IDL.Text],
+        [IDL.Text],
+        [],
+      ),
     'getAllBookings' : IDL.Func([], [IDL.Vec(Booking)], ['query']),
-    'getAllServiceAreas' : IDL.Func([], [IDL.Vec(ServiceArea)], ['query']),
+    'getAllServiceLocations' : IDL.Func(
+        [],
+        [IDL.Vec(ServiceLocation)],
+        ['query'],
+      ),
+    'getBooking' : IDL.Func([IDL.Text], [IDL.Opt(Booking)], ['query']),
+    'getBookingMetrics' : IDL.Func(
+        [],
+        [
+          IDL.Record({
+            'pendingPayments' : IDL.Nat,
+            'totalBookings' : IDL.Nat,
+            'totalRevenue' : IDL.Nat,
+            'paidBookings' : IDL.Nat,
+          }),
+        ],
+        ['query'],
+      ),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getStripeSessionStatus' : IDL.Func([IDL.Text], [StripeSessionStatus], []),
+    'getSuperAdmin' : IDL.Func([], [IDL.Opt(IDL.Principal)], ['query']),
+    'getUpiBookingsCount' : IDL.Func([], [IDL.Nat], []),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
         [IDL.Opt(UserProfile)],
@@ -201,8 +273,14 @@ export const idlFactory = ({ IDL }) => {
       ),
     'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
     'isStripeConfigured' : IDL.Func([], [IDL.Bool], ['query']),
+    'processUpiPayment' : IDL.Func(
+        [UpiPaymentRequest, IDL.Text, IDL.Text],
+        [IDL.Text],
+        [],
+      ),
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
     'setStripeConfiguration' : IDL.Func([StripeConfiguration], [], []),
+    'setSuperAdmin' : IDL.Func([IDL.Principal], [], []),
     'submitContactForm' : IDL.Func(
         [IDL.Text, IDL.Text, IDL.Text, IDL.Text],
         [IDL.Text],

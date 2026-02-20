@@ -1,14 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Update contact information throughout the website with the correct phone number and email address.
+**Goal:** Configure the currently logged-in Internet Identity user as super admin with full access rights to the admin dashboard.
 
 **Planned changes:**
-- Update phone number to 8136009930 in CTAButtons component (Call Now and WhatsApp buttons)
-- Update phone number to 8136009930 in Footer component
-- Update email address to ajayyadavddm@gmail.com in Footer component
-- Update phone number to 8136009930 in ContactPage contact details
-- Update email address to ajayyadavddm@gmail.com in ContactPage contact details
-- Update WhatsApp booking links to use 8136009930 across all six service categories in ServicesPage
+- Capture the authenticated principal from the current Internet Identity session
+- Add backend method to set/update super admin principal with authorization checks
+- Store super admin principal in stable storage for persistence across upgrades
+- Update frontend AdminGuard to recognize and grant access to super admin
+- Add comprehensive console logging for principal IDs and authentication status throughout the flow
 
-**User-visible outcome:** All contact information across the website (footer, contact page, service pages, and call-to-action buttons) displays the correct phone number (8136009930) and email address (ajayyadavddm@gmail.com), with working links to call, WhatsApp, and email.
+**User-visible outcome:** After logging in with Internet Identity, the user is automatically configured as super admin and gains immediate access to all admin dashboard features without restrictions.

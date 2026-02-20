@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PaymentSuccessPage from './pages/PaymentSuccessPage';
 import PaymentFailurePage from './pages/PaymentFailurePage';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 
 const rootRoute = createRootRoute({
   component: Layout,
@@ -54,6 +55,12 @@ const paymentFailureRoute = createRoute({
   component: PaymentFailurePage,
 });
 
+const adminRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/admin',
+  component: AdminDashboardPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
@@ -62,6 +69,7 @@ const routeTree = rootRoute.addChildren([
   contactRoute,
   paymentSuccessRoute,
   paymentFailureRoute,
+  adminRoute,
 ]);
 
 const router = createRouter({ 
