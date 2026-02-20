@@ -95,14 +95,29 @@ export default function ServicesPage() {
       experience: '2-5 years general labour experience',
       timeline: 'Available on daily basis with advance booking',
     },
+    {
+      name: 'Daily Labour Service',
+      icon: 'labour-icon',
+      description:
+        'Flexible workforce solutions for your temporary staffing needs. Skilled workers available for short-term projects, events, and seasonal work with quick availability.',
+      features: [
+        'Event setup and cleanup',
+        'Warehouse work and inventory',
+        'Loading and unloading operations',
+        'Seasonal agricultural work',
+        'Temporary staffing solutions',
+      ],
+      experience: 'Reliable and physically fit workers',
+      timeline: 'Same-day availability for urgent needs',
+    },
   ];
 
   return (
     <>
       <SEOHead
         title="Our Services - Labour Categories"
-        description="Explore our comprehensive labour services including masons, electricians, plumbers, painters, construction helpers, and daily wage workers in Tinsukia and Doomdooma, Assam."
-        keywords="mason service, electrician, plumber, painter, construction helper, daily wage labour, Tinsukia, Doomdooma"
+        description="Explore our comprehensive labour services including masons, electricians, plumbers, painters, construction helpers, and daily labour services in Tinsukia and Doomdooma, Assam."
+        keywords="mason service, electrician, plumber, painter, construction helper, daily labour service, Tinsukia, Doomdooma"
       />
 
       {/* Hero Section */}

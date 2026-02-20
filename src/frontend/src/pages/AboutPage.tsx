@@ -6,8 +6,8 @@ export default function AboutPage() {
     <>
       <SEOHead
         title="About Us - Local Labour Service Provider in Assam"
-        description="Learn about Ajay Labour Service - connecting verified workers with customers in Tinsukia and Doomdooma, Assam. Founded by a local entrepreneur committed to quality service."
-        keywords="about Ajay Labour Service, labour provider Assam, verified workers Tinsukia"
+        description="Learn about Assam Labour Service - connecting verified workers with customers in Tinsukia and Doomdooma, Assam. Founded by a local entrepreneur committed to quality service."
+        keywords="about Assam Labour Service, labour provider Assam, verified workers Tinsukia"
       />
 
       {/* Hero Section */}
@@ -28,7 +28,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold md:text-4xl mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Ajay Labour Service was founded with a simple yet powerful vision:
+                  Assam Labour Service was founded with a simple yet powerful vision:
                   to bridge the gap between skilled workers and customers in Tinsukia
                   and Doomdooma, Assam. As a local entrepreneur deeply rooted in the
                   community, our founder recognized the challenges both workers and
@@ -42,7 +42,7 @@ export default function AboutPage() {
                   both parties.
                 </p>
                 <p>
-                  Today, Ajay Labour Service stands as a testament to our commitment
+                  Today, Assam Labour Service stands as a testament to our commitment
                   to quality, transparency, and community development. We carefully
                   verify every worker, ensuring they meet our high standards of skill
                   and professionalism. Our platform makes it easy for customers to
@@ -60,7 +60,7 @@ export default function AboutPage() {
             <div className="order-1 lg:order-2">
               <img
                 src="/assets/generated/founder-image.dim_400x400.png"
-                alt="Founder of Ajay Labour Service"
+                alt="Founder of Assam Labour Service"
                 className="rounded-2xl shadow-2xl mx-auto"
               />
             </div>
@@ -121,8 +121,8 @@ export default function AboutPage() {
               <div className="pb-8">
                 <h3 className="text-xl font-bold mb-2">2023 - Digital Platform</h3>
                 <p className="text-muted-foreground">
-                  Launched online booking platform with secure payment integration. 
-                  Made booking labour services easier and more transparent for customers.
+                  Launched our online booking platform, making it easier for customers to 
+                  connect with verified workers. Introduced transparent pricing and instant booking.
                 </p>
               </div>
             </div>
@@ -136,8 +136,8 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-bold mb-2">2026 - Present</h3>
                 <p className="text-muted-foreground">
-                  Serving 500+ happy customers with 100+ verified workers. Completed 1000+ 
-                  projects and continuing to grow while maintaining quality standards.
+                  Now serving 100+ verified workers across 7 service categories. Completed 
+                  1000+ projects with 500+ satisfied customers across Tinsukia and Doomdooma.
                 </p>
               </div>
             </div>
@@ -145,156 +145,41 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Information */}
+      {/* Team & Workers */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold md:text-4xl">Our Team</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Skilled professionals committed to excellence
+              Dedicated professionals committed to excellence
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-xl bg-card p-8 shadow-md border border-border/40 text-center">
-              <div className="flex justify-center mb-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-labour-blue/10">
-                  <Users className="h-8 w-8 text-labour-blue" />
-                </div>
-              </div>
-              <h3 className="text-3xl font-bold text-labour-blue mb-2">100+</h3>
-              <p className="text-muted-foreground">Verified Workers</p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Across all service categories with proven expertise
+            <div className="rounded-2xl bg-card p-8 shadow-md border border-border/40 text-center">
+              <Users className="h-12 w-12 mx-auto mb-4 text-labour-blue" />
+              <h3 className="text-4xl font-bold text-labour-blue mb-2">100+</h3>
+              <p className="text-lg font-semibold mb-2">Verified Workers</p>
+              <p className="text-sm text-muted-foreground">
+                Skilled professionals across all service categories
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-8 shadow-md border border-border/40 text-center">
-              <div className="flex justify-center mb-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-labour-orange/10">
-                  <Award className="h-8 w-8 text-labour-orange" />
-                </div>
-              </div>
-              <h3 className="text-3xl font-bold text-labour-orange mb-2">5-12</h3>
-              <p className="text-muted-foreground">Years Experience</p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Average experience level of our skilled workers
+            <div className="rounded-2xl bg-card p-8 shadow-md border border-border/40 text-center">
+              <Award className="h-12 w-12 mx-auto mb-4 text-labour-orange" />
+              <h3 className="text-4xl font-bold text-labour-orange mb-2">5+</h3>
+              <p className="text-lg font-semibold mb-2">Years Experience</p>
+              <p className="text-sm text-muted-foreground">
+                Average experience of our skilled workers
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-8 shadow-md border border-border/40 text-center">
-              <div className="flex justify-center mb-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-labour-blue/10">
-                  <CheckCircle className="h-8 w-8 text-labour-blue" />
-                </div>
-              </div>
-              <h3 className="text-3xl font-bold text-labour-blue mb-2">100%</h3>
-              <p className="text-muted-foreground">Verified</p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Every worker undergoes thorough verification process
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Commitments */}
-      <section className="bg-muted/30 py-16">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">Our Commitments</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Promises we make to every customer
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-blue/10">
-                <CheckCircle className="h-6 w-6 text-labour-blue" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Verified Workers</h3>
-              <p className="text-muted-foreground text-sm">
-                Every worker is thoroughly verified for skills, experience, and background 
-                before joining our platform.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-orange/10">
-                <TrendingUp className="h-6 w-6 text-labour-orange" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Transparent Pricing</h3>
-              <p className="text-muted-foreground text-sm">
-                Clear, upfront pricing with no hidden charges. You know exactly what you're 
-                paying for before booking.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-blue/10">
-                <Users className="h-6 w-6 text-labour-blue" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Quick Response</h3>
-              <p className="text-muted-foreground text-sm">
-                Fast response times with booking confirmation within 2 hours. Same-day 
-                service available for urgent needs.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-orange/10">
-                <Heart className="h-6 w-6 text-labour-orange" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Customer Satisfaction</h3>
-              <p className="text-muted-foreground text-sm">
-                Your satisfaction is our priority. We ensure quality work and provide 
-                support throughout your project.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Community Impact */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">Community Impact</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Making a difference in Tinsukia & Doomdooma
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div className="rounded-xl bg-gradient-to-br from-labour-blue/10 to-labour-blue/5 p-8 border border-labour-blue/20">
-              <h3 className="text-2xl font-bold mb-4 text-labour-blue">
-                Local Employment Generation
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                We've created sustainable employment opportunities for 100+ skilled workers 
-                in the Tinsukia and Doomdooma regions. By connecting local workers with 
-                customers, we help families earn a stable income while contributing to the 
-                local economy.
-              </p>
-              <p className="text-muted-foreground">
-                Every booking you make supports a local worker and their family, creating 
-                a positive ripple effect in our community.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-gradient-to-br from-labour-orange/10 to-labour-orange/5 p-8 border border-labour-orange/20">
-              <h3 className="text-2xl font-bold mb-4 text-labour-orange">
-                Service Coverage & Accessibility
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                We proudly serve both Tinsukia and Doomdooma districts, ensuring that 
-                quality labour services are accessible to everyone in the region. Our 
-                extensive network covers urban areas and surrounding villages.
-              </p>
-              <p className="text-muted-foreground">
-                By making professional labour services easily accessible, we're helping 
-                improve infrastructure and living standards across our service areas.
+            <div className="rounded-2xl bg-card p-8 shadow-md border border-border/40 text-center">
+              <TrendingUp className="h-12 w-12 mx-auto mb-4 text-labour-blue" />
+              <h3 className="text-4xl font-bold text-labour-blue mb-2">1000+</h3>
+              <p className="text-lg font-semibold mb-2">Projects Completed</p>
+              <p className="text-sm text-muted-foreground">
+                Successfully delivered projects across Assam
               </p>
             </div>
           </div>
@@ -312,94 +197,85 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-blue/10">
-                <CheckCircle className="h-6 w-6 text-labour-blue" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Quality First</h3>
+            <div className="rounded-2xl bg-card p-6 shadow-md border border-border/40">
+              <CheckCircle className="h-10 w-10 mb-4 text-labour-blue" />
+              <h3 className="text-xl font-bold mb-3">Quality First</h3>
               <p className="text-muted-foreground">
-                We verify every worker to ensure they meet our high standards of
-                skill and professionalism. Quality workmanship is our guarantee.
+                We ensure every worker meets our strict quality standards through 
+                thorough verification and continuous monitoring.
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-orange/10">
-                <CheckCircle className="h-6 w-6 text-labour-orange" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Transparency</h3>
+            <div className="rounded-2xl bg-card p-6 shadow-md border border-border/40">
+              <Heart className="h-10 w-10 mb-4 text-labour-orange" />
+              <h3 className="text-xl font-bold mb-3">Community Focus</h3>
               <p className="text-muted-foreground">
-                Clear pricing, honest communication, and no hidden charges. We
-                believe in building trust through transparency.
+                Supporting local workers and their families while serving our 
+                community with reliable labour services.
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-blue/10">
-                <CheckCircle className="h-6 w-6 text-labour-blue" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Community Focus</h3>
+            <div className="rounded-2xl bg-card p-6 shadow-md border border-border/40">
+              <Award className="h-10 w-10 mb-4 text-labour-blue" />
+              <h3 className="text-xl font-bold mb-3">Transparency</h3>
               <p className="text-muted-foreground">
-                Supporting local workers and contributing to the economic growth of
-                Tinsukia and Doomdooma is at the heart of what we do.
+                Clear pricing, honest communication, and no hidden charges. 
+                What you see is what you get.
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-orange/10">
-                <CheckCircle className="h-6 w-6 text-labour-orange" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Reliability</h3>
+            <div className="rounded-2xl bg-card p-6 shadow-md border border-border/40">
+              <Users className="h-10 w-10 mb-4 text-labour-orange" />
+              <h3 className="text-xl font-bold mb-3">Customer Satisfaction</h3>
               <p className="text-muted-foreground">
-                Quick response times, dependable workers, and consistent service
-                delivery. You can count on us.
+                Your satisfaction is our priority. We go the extra mile to ensure 
+                you're happy with our service.
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-blue/10">
-                <CheckCircle className="h-6 w-6 text-labour-blue" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Customer Satisfaction</h3>
+            <div className="rounded-2xl bg-card p-6 shadow-md border border-border/40">
+              <TrendingUp className="h-10 w-10 mb-4 text-labour-blue" />
+              <h3 className="text-xl font-bold mb-3">Continuous Improvement</h3>
               <p className="text-muted-foreground">
-                Your satisfaction is our success. We go the extra mile to ensure
-                every customer is happy with our service.
+                Always learning and improving our services based on customer 
+                feedback and industry best practices.
               </p>
             </div>
 
-            <div className="rounded-xl bg-card p-6 shadow-md border border-border/40">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-labour-orange/10">
-                <CheckCircle className="h-6 w-6 text-labour-orange" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold">Fair Practices</h3>
+            <div className="rounded-2xl bg-card p-6 shadow-md border border-border/40">
+              <CheckCircle className="h-10 w-10 mb-4 text-labour-orange" />
+              <h3 className="text-xl font-bold mb-3">Reliability</h3>
               <p className="text-muted-foreground">
-                Fair wages for workers and fair prices for customers. We believe in
-                ethical business practices that benefit everyone.
+                Dependable service you can count on. We show up on time and 
+                deliver what we promise.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Community Impact */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-labour-blue md:text-5xl">500+</div>
-              <div className="mt-2 text-sm text-muted-foreground">Happy Customers</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-labour-orange md:text-5xl">100+</div>
-              <div className="mt-2 text-sm text-muted-foreground">Verified Workers</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-labour-blue md:text-5xl">1000+</div>
-              <div className="mt-2 text-sm text-muted-foreground">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-labour-orange md:text-5xl">2</div>
-              <div className="mt-2 text-sm text-muted-foreground">Service Areas</div>
+          <div className="mx-auto max-w-3xl rounded-2xl bg-gradient-to-br from-labour-blue to-labour-blue/90 p-8 text-white shadow-2xl md:p-12">
+            <h3 className="text-3xl font-bold mb-4 text-center">Our Community Impact</h3>
+            <p className="mb-6 opacity-90 text-center text-lg">
+              Every booking you make supports local workers and contributes to the 
+              economic development of Tinsukia and Doomdooma.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-4xl font-bold mb-2">100+</div>
+                <div className="text-sm opacity-90">Families Supported</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">500+</div>
+                <div className="text-sm opacity-90">Happy Customers</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">₹10L+</div>
+                <div className="text-sm opacity-90">Paid to Workers</div>
+              </div>
             </div>
           </div>
         </div>

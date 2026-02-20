@@ -12,7 +12,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="mb-4 text-lg font-bold text-labour-blue">
-              Ajay Labour Service
+              Assam Labour Service
             </h3>
             <p className="text-sm text-muted-foreground">
               Verified labour service provider in Tinsukia and Doomdooma, Assam.
@@ -101,7 +101,7 @@ export function Footer() {
 
         <div className="mt-8 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            © {currentYear} Ajay Labour Service. All rights reserved.
+            © {currentYear} Assam Labour Service. All rights reserved.
           </p>
           <p className="mt-2">
             Built with ❤️ using{' '}

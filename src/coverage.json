@@ -1,70 +1,78 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-19T15:32:49.211Z",
+  "generatedAt": "2026-02-20T03:28:31.383Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 2,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-47",
-        "summary": "Update backend main.mo to capture the caller's principal from the current authenticated Internet Identity session and grant super admin role with full access rights",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-48",
-        "summary": "Add a backend method to set or update the super admin principal that can only be called once during initial setup or by the current super admin",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-49",
-        "summary": "Update frontend AdminGuard component to handle super admin authentication flow and display appropriate messaging when super admin access is granted",
+        "id": "REQ-1",
+        "summary": "Update the website name from 'Ajay Labour Service' to a new name specified by the user. Update all occurrences in frontend files including SEO metadata, page titles, headers, footers, and About page content.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/AdminGuard.tsx"
+          "frontend/index.html",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/pages/AboutPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/ServicesPage.tsx",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/BookingPage.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/components/AdminGuard.tsx"
+          "frontend/index.html",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/pages/AboutPage.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/ServicesPage.tsx",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/BookingPage.tsx"
         ]
       },
       {
-        "id": "REQ-50",
-        "summary": "Add console logging throughout the super admin configuration process to capture principal IDs, authentication status, and any authorization failures for debugging",
+        "id": "REQ-2",
+        "summary": "Add 'Daily Labour Service' as a new service offering on the Services page. Include a dedicated section with service description, features, typical use cases, and worker qualifications similar to existing service categories (mason, electrician, plumber, painter, construction helper, daily wage labour).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/hooks/useActor.ts",
-          "frontend/src/components/Layout.tsx"
+          "frontend/src/pages/ServicesPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/Layout.tsx"
+          "frontend/src/pages/ServicesPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Ensure the 'Daily Labour Service' is accessible from the homepage services preview section and includes appropriate call-to-action buttons linking to the detailed service information.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/AdminGuard.tsx",
+    "frontend/index.html",
+    "frontend/src/components/Footer.tsx",
     "frontend/src/components/Layout.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/BookingPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ServicesPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

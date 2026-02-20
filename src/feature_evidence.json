@@ -2,10 +2,17 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-frontend-adminguard-component-to-handle-super-admin-authentication-flow-and-display-appropriate-messaging-when-super-admin-access-is-granted",
-      "featureTitle": "Update frontend AdminGuard component to handle super admin authentication flow and display appropriate messaging when super admin access is granted",
+      "featureId": "feature-update-the-website-name-from-ajay-labour-service-to-a-new-name-specified-by-the-user-update-all-occurrences-in-frontend-files-including-seo-metadata-page-titles-headers-footers-and-about-page-content",
+      "featureTitle": "Update the website name from 'Ajay Labour Service' to a new name specified by the user. Update all occurrences in frontend files including SEO metadata, page titles, headers, footers, and About page content.",
       "files": [
-        "frontend/src/components/AdminGuard.tsx"
+        "frontend/index.html",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/BookingPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
       ],
       "components": [
         "stripe@3.0.0",
@@ -18,16 +25,15 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-49"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-console-logging-throughout-the-super-admin-configuration-process-to-capture-principal-ids-authentication-status-and-any-authorization-failures-for-debugging",
-      "featureTitle": "Add console logging throughout the super admin configuration process to capture principal IDs, authentication status, and any authorization failures for debugging",
+      "featureId": "feature-add-daily-labour-service-as-a-new-service-offering-on-the-services-page-include-a-dedicated-section-with-service-description-features-typical-use-cases-and-worker-qualifications-similar-to-existing-service-categories-mason-electrician-plumber-painter-construction-helper-daily-wage-labour",
+      "featureTitle": "Add 'Daily Labour Service' as a new service offering on the Services page. Include a dedicated section with service description, features, typical use cases, and worker qualifications similar to existing service categories (mason, electrician, plumber, painter, construction helper, daily wage labour).",
       "files": [
-        "frontend/src/components/Layout.tsx",
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/pages/ServicesPage.tsx"
       ],
       "components": [
         "stripe@3.0.0",
@@ -40,7 +46,28 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-50"
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-daily-labour-service-is-accessible-from-the-homepage-services-preview-section-and-includes-appropriate-call-to-action-buttons-linking-to-the-detailed-service-information",
+      "featureTitle": "Ensure the 'Daily Labour Service' is accessible from the homepage services preview section and includes appropriate call-to-action buttons linking to the detailed service information.",
+      "files": [
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
       ],
       "confidence": "high"
     }

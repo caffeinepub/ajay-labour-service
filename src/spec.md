@@ -1,13 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Configure the currently logged-in Internet Identity user as super admin with full access rights to the admin dashboard.
+**Goal:** Rename the website and add a new Daily Labour Service offering.
 
 **Planned changes:**
-- Capture the authenticated principal from the current Internet Identity session
-- Add backend method to set/update super admin principal with authorization checks
-- Store super admin principal in stable storage for persistence across upgrades
-- Update frontend AdminGuard to recognize and grant access to super admin
-- Add comprehensive console logging for principal IDs and authentication status throughout the flow
+- Update website name from "Ajay Labour Service" to the new name across all pages, headers, footers, SEO metadata, and About page content
+- Add "Daily Labour Service" as a new service category on the Services page with description, features, use cases, and worker qualifications
+- Include Daily Labour Service in the homepage services preview section with appropriate call-to-action buttons
 
-**User-visible outcome:** After logging in with Internet Identity, the user is automatically configured as super admin and gains immediate access to all admin dashboard features without restrictions.
+**User-visible outcome:** The website displays the new name consistently throughout, and users can view and book the new Daily Labour Service alongside existing service offerings.

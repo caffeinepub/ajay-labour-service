@@ -1,83 +1,77 @@
 {
   "kind": "build_request",
-  "title": "Configure logged-in user as super admin with full access rights",
-  "priority": "high",
+  "title": "Rename website and add daily labour service",
+  "projectName": "Ajay Labour Service",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-47",
-      "text": "Update backend main.mo to capture the caller's principal from the current authenticated Internet Identity session and grant super admin role with full access rights",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "i have logged in . set this identity as super admin."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The isCallerAdmin method returns true for the configured super admin principal",
-        "Super admin principal is persisted in stable storage across canister upgrades",
-        "Only the super admin principal can access all admin dashboard features without restrictions"
-      ]
-    },
-    {
-      "id": "REQ-48",
-      "text": "Add a backend method to set or update the super admin principal that can only be called once during initial setup or by the current super admin",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-latest"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Method validates that caller is either setting initial super admin (when none exists) or is the current super admin",
-        "Returns success confirmation when super admin is successfully configured",
-        "Returns descriptive error if unauthorized principal attempts to set super admin"
-      ]
-    },
-    {
-      "id": "REQ-49",
-      "text": "Update frontend AdminGuard component to handle super admin authentication flow and display appropriate messaging when super admin access is granted",
+      "id": "REQ-1",
+      "text": "Update the website name from 'Ajay Labour Service' to a new name specified by the user. Update all occurrences in frontend files including SEO metadata, page titles, headers, footers, and About page content.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-final"
+        ],
+        "quotes": [
+          "change the name of website"
         ]
       },
       "acceptanceCriteria": [
-        "Component correctly identifies when logged-in user is the super admin",
-        "Admin dashboard becomes accessible immediately after super admin authentication",
-        "No access denied message appears for the super admin principal"
+        "All visible references to the website name are updated consistently across all pages",
+        "SEO metadata (title tags, meta descriptions) reflect the new name",
+        "Footer, header, and About page display the new name",
+        "No hardcoded references to the old name remain in user-facing content"
       ]
     },
     {
-      "id": "REQ-50",
-      "text": "Add console logging throughout the super admin configuration process to capture principal IDs, authentication status, and any authorization failures for debugging",
-      "target": "both",
+      "id": "REQ-2",
+      "text": "Add 'Daily Labour Service' as a new service offering on the Services page. Include a dedicated section with service description, features, typical use cases, and worker qualifications similar to existing service categories (mason, electrician, plumber, painter, construction helper, daily wage labour).",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-final"
+        ],
+        "quotes": [
+          "add daily labour sevice"
         ]
       },
       "acceptanceCriteria": [
-        "Backend logs show the principal being configured as super admin",
-        "Frontend logs display the authenticated principal and admin check results",
-        "Error logs provide clear information if super admin setup fails"
+        "A new 'Daily Labour Service' section appears on the Services page",
+        "The section includes a clear description of what daily labour services entail",
+        "Features and benefits are listed in a format consistent with other service categories",
+        "The service is visually integrated with the existing services layout"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Ensure the 'Daily Labour Service' is accessible from the homepage services preview section and includes appropriate call-to-action buttons linking to the detailed service information.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-final"
+        ],
+        "quotes": [
+          "add daily labour sevice"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Daily Labour Service appears in the homepage services preview grid",
+        "CTA buttons (Call Now, WhatsApp, Book Now) work correctly for the new service",
+        "The service card maintains visual consistency with existing service cards"
       ]
     }
   ],
   "constraints": [
-    "Maintain single-actor architecture with all logic in backend/main.mo",
-    "Use existing Internet Identity authentication system - do not modify useInternetIdentity.ts",
-    "Preserve existing role-based access control structure",
-    "Do not create email-based authentication system"
+    "Do not modify backend code (previous build attempts failed when changing backend)",
+    "Maintain existing color scheme and visual design unless new name requires branding updates",
+    "Preserve all existing functionality including WhatsApp integration and contact forms",
+    "Do not edit immutable frontend paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui"
   ],
   "nonGoals": [
-    "Implementing email/password login system",
-    "Creating multiple admin roles beyond super admin",
-    "Building admin user management interface",
-    "Modifying Internet Identity authentication flow"
+    "Changing the backend booking or payment logic",
+    "Modifying the admin dashboard functionality",
+    "Altering the color scheme or visual theme",
+    "Adding new backend routes or API endpoints"
   ],
   "imageRequirements": {
     "required": [],

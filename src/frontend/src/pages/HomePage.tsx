@@ -91,7 +91,7 @@ export default function HomePage() {
               { name: 'Plumber', icon: 'plumber-icon' },
               { name: 'Painter', icon: 'painter-icon' },
               { name: 'Construction Helper', icon: 'helper-icon' },
-              { name: 'Daily Wage Labour', icon: 'labour-icon' },
+              { name: 'Daily Labour Service', icon: 'labour-icon' },
             ].map((service) => (
               <div
                 key={service.name}
@@ -124,30 +124,23 @@ export default function HomePage() {
       {/* Testimonials Section */}
       <TestimonialsSection />
 
-      {/* Project Gallery Section */}
+      {/* Project Gallery */}
       <ProjectGallery />
 
       {/* FAQ Section */}
       <FAQSection />
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-labour-blue to-labour-blue/90 py-16 text-white">
+      {/* Final CTA */}
+      <section className="bg-gradient-to-br from-labour-blue to-labour-blue/90 py-16 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Ready to Book Your Labour?
+          <h2 className="text-3xl font-bold md:text-4xl mb-4">
+            Ready to Book Your Labour Service?
           </h2>
-          <p className="mt-4 text-lg opacity-90">
-            Book now with just ₹300 advance payment. Quick, easy, and secure.
+          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+            Get started with just ₹300 advance booking. Quick response, verified
+            workers, and transparent pricing guaranteed.
           </p>
-          <div className="mt-8">
-            <Link
-              to="/booking"
-              className="inline-flex items-center space-x-2 rounded-full bg-labour-orange px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-labour-orange/90 hover:shadow-xl hover:scale-105"
-            >
-              <span>Book Now</span>
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
+          <CTAButtons />
         </div>
       </section>
     </>

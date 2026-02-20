@@ -1,46 +1,95 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Configure Super Admin with Full Access Rights - Frontend Implementation",
+  "title": "Rename website and add daily labour service",
   "requirements": [
     {
-      "id": "REQ-49",
-      "summary": "Update AdminGuard component to handle super admin authentication flow and display appropriate messaging",
+      "id": "REQ-1",
+      "summary": "Update the website name from 'Ajay Labour Service' to a new name specified by the user across all frontend files including SEO metadata, page titles, headers, footers, and About page content",
       "acceptanceCriteria": [
-        "Component correctly identifies when logged-in user is the super admin",
-        "Admin dashboard becomes accessible immediately after super admin authentication",
-        "No access denied message appears for the super admin principal"
+        "All visible references to the website name are updated consistently across all pages",
+        "SEO metadata (title tags, meta descriptions) reflect the new name",
+        "Footer, header, and About page display the new name",
+        "No hardcoded references to the old name remain in user-facing content"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/AdminGuard.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Add console logging to track authentication flow and admin status checks. Log the current principal ID, the result of isCallerAdmin backend check, and any authorization failures. Display loading states appropriately while checking super admin status. Ensure the component grants immediate access when the backend confirms super admin role without showing access denied messages."
-        }
-      ]
-    },
-    {
-      "id": "REQ-50",
-      "summary": "Add console logging throughout the super admin configuration process for debugging",
-      "acceptanceCriteria": [
-        "Frontend logs display the authenticated principal and admin check results",
-        "Error logs provide clear information if super admin setup fails"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add console logging to useIsCallerAdmin hook to capture the principal ID being checked, the backend response (true/false), and any errors during the admin verification process. Log before making the backend call and after receiving the response."
-        },
-        {
-          "path": "frontend/src/hooks/useActor.ts",
-          "operation": "modify",
-          "description": "Add console logging to capture the authenticated principal ID when the actor is initialized and when authentication state changes. Log any errors during actor initialization or authentication failures that could prevent super admin setup."
+          "description": "Update the <title> tag and meta tags (description, keywords, og:title, og:site_name, twitter:title) to replace 'Ajay Labour Service' with the new website name. Update all references to Tinsukia and Doomdooma if the new name changes service areas."
         },
         {
           "path": "frontend/src/components/Layout.tsx",
           "operation": "modify",
-          "description": "Add console logging in the authentication flow to track login/logout events, including the principal ID of the logged-in user. Log when authentication succeeds, when it fails, and when the user logs out. This helps debug the super admin authentication process end-to-end."
+          "description": "Update the header/navbar branding text that displays 'Ajay Labour Service' to show the new website name. Ensure the logo text in both desktop and mobile navigation reflects the new name."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Replace all occurrences of 'Ajay Labour Service' in the footer component with the new website name, including the company info section, service description, and any copyright text."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Update all references to 'Ajay Labour Service' throughout the About page content, including the page title, SEOHead component props, hero section, founder story, timeline entries, and values section to reflect the new website name."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Replace 'Ajay Labour Service' references in the hero section heading, SEOHead component, and any other mentions on the homepage with the new website name. Ensure the main value proposition messaging is updated consistently."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Update the SEOHead component props and any references to 'Ajay Labour Service' in the services page content with the new website name."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Replace 'Ajay Labour Service' in the contact page heading, SEOHead component, and contact information section with the new website name."
+        },
+        {
+          "path": "frontend/src/pages/BookingPage.tsx",
+          "operation": "modify",
+          "description": "Update the page title, SEOHead component, and any references to 'Ajay Labour Service' in the booking form page with the new website name."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update the CSS custom properties and comments that reference 'Ajay Labour Service' to reflect the new website name for brand consistency in styling documentation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add 'Daily Labour Service' as a new service offering on the Services page with dedicated section including service description, features, typical use cases, and worker qualifications",
+      "acceptanceCriteria": [
+        "A new 'Daily Labour Service' section appears on the Services page",
+        "The section includes a clear description of what daily labour services entail",
+        "Features and benefits are listed in a format consistent with other service categories",
+        "The service is visually integrated with the existing services layout"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Add a new 'Daily Labour Service' section to the ServicesPage component following the existing pattern of service categories (mason, electrician, plumber, painter, construction helper, daily wage labour). Include a heading, description explaining what daily labour services are (flexible workforce for various tasks, short-term projects, or temporary needs), a features list highlighting key benefits (flexible hiring, versatile skills, cost-effective for short-term needs, quick availability), typical use cases (event setup/cleanup, warehouse work, loading/unloading, seasonal work, temporary staffing), and worker qualifications (reliable attendance, physical fitness, basic task comprehension, adaptability). Position this new section after the 'Daily Wage Labour' section to maintain logical flow. Ensure the styling matches existing service category sections with consistent spacing, typography, and layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Ensure the 'Daily Labour Service' is accessible from the homepage services preview section with appropriate call-to-action buttons",
+      "acceptanceCriteria": [
+        "Daily Labour Service appears in the homepage services preview grid",
+        "CTA buttons (Call Now, WhatsApp, Book Now) work correctly for the new service",
+        "The service card maintains visual consistency with existing service cards"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add a new service card for 'Daily Labour Service' to the services preview grid on the HomePage. The card should include an icon (use the existing generated/labour-icon.dim_150x150.png asset as it's appropriate for general labour), a heading 'Daily Labour Service', a brief description (e.g., 'Flexible workforce solutions for your temporary staffing needs. Skilled workers available for short-term projects, events, and seasonal work.'), and CTAButtons component with serviceType='Daily Labour'. Position the new card in the services grid alongside existing service cards (mason, electrician, plumber, painter, construction helper, daily wage labour). Ensure the card uses the same styling, spacing, and hover effects as existing service cards for visual consistency."
         }
       ]
     }

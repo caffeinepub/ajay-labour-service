@@ -44,7 +44,6 @@ export function Layout() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
-    { name: 'Booking', path: '/booking' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -77,7 +76,7 @@ export function Layout() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link to="/" className="flex items-center space-x-2">
             <div className="text-xl font-bold text-labour-blue">
-              Ajay Labour Service
+              Assam Labour Service
             </div>
           </Link>
 
